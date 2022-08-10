@@ -1,14 +1,15 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 
 import { useIsAuthenticated } from "@azure/msal-react";
+import PageNotAccessible from './../PageNotAccessible';
 
-import PowerBiService from './../../services/PowerBiService'
+import PowerBiService from '../../services/PowerBiService'
 import { PowerBiWorkspace } from '../../models/PowerBiModels';
 
 import { Box, Button, Paper } from '@mui/material';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 
-import Signin from './../signin';
+
 
 const Workspaces = () => {
     const isAuthenticated = useIsAuthenticated();
@@ -23,7 +24,10 @@ const Workspaces = () => {
         }
     }, [isAuthenticated]);
 
-    if (isAuthenticated) {
+    if (!isAuthenticated) {
+        return <PageNotAccessible />
+    }
+    else {
         return (
             <Box>
                 <h2>Workspaces</h2>
@@ -52,9 +56,6 @@ const Workspaces = () => {
                     </Table>
                 </TableContainer>
             </Box>)
-    }
-    else {
-        return <Signin />
     }
 };
 

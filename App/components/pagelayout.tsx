@@ -3,13 +3,14 @@ import { Route, Routes } from "react-router-dom";
 
 import { Container } from '@mui/material';
 
-import Banner from './banner';
-import Home from './pages/home';
-import Profile from './pages/profile';
-import Workspaces from './pages/workspaces';
-import PageNotFound from './pagenotfound';
+import Banner from './Banner';
+import Home from './pages/Home';
+import Profile from './pages/Profile';
+import Workspaces from './pages/Workspaces';
+import PageNotFound from './PageNotFound';
 
 const PageLayout = () => {
+
     const refContentContainer = useRef<HTMLDivElement>(null);
 
     const sizeContentContainenr = () => {

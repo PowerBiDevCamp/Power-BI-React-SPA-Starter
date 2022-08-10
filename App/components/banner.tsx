@@ -1,11 +1,10 @@
-import React from 'react';
 import { useIsAuthenticated } from "@azure/msal-react";
 import { useNavigate } from 'react-router-dom';
 
+import { AppBar, Divider, Button, IconButton, Toolbar, Typography } from '@mui/material';
 import { Assessment } from '@mui/icons-material';
-import { AppBar, Divider, Button, Box, IconButton, Toolbar, Typography } from '@mui/material';
 
-import LoginMenu from './loginmenu';
+import LoginMenu from './LoginMenu';
 
 const Banner = () => {
   let isAuthenticated = useIsAuthenticated();

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useMsal, useIsAuthenticated, useAccount } from "@azure/msal-react";
 import { Box, Button, Typography, Alert } from '@mui/material';
 
-const Signin = () => {
+const PageNotAccessible = () => {
   const isAuthenticated = useIsAuthenticated();
 
   if (!isAuthenticated) {
@@ -15,4 +15,4 @@ const Signin = () => {
   )}
 }
 
-export default Signin;
+export default PageNotAccessible;

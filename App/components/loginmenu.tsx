@@ -22,7 +22,6 @@ const LoginMenu = () => {
     instance.logoutPopup();
   };
 
-
   if (isAuthenticated) {
     return (
       <Box sx={{ marginLeft: "auto" }}>

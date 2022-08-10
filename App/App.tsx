@@ -1,6 +1,5 @@
-import React from 'react';
 import { BrowserRouter } from "react-router-dom";
-import PageLayout from './components/pagelayout'
+import PageLayout from './components/PageLayout'
 import { Box, CssBaseline } from '@mui/material';
 
 const App = () => {

@@ -22,7 +22,6 @@ export default class PowerBiService {
       return "";
     }
   
-    
   };
 
   static GetWorkspaces = async (): Promise<PowerBiWorkspace[]> => {
