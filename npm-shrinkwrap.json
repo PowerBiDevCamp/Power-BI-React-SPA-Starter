@@ -1,11 +1,11 @@
 {
-  "name": "modern-react-for-power-bi",
+  "name": "power-bi-react-spa-starter",
   "version": "1.0.0",
   "lockfileVersion": 2,
   "requires": true,
   "packages": {
     "": {
-      "name": "modern-react-for-power-bi",
+      "name": "power-bi-react-spa-starter",
       "version": "1.0.0",
       "license": "ISC",
       "devDependencies": {
