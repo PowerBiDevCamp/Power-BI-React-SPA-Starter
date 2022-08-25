@@ -1,5 +1,5 @@
 import { useIsAuthenticated } from "@azure/msal-react";
-import { Box } from '@mui/system';
+import { Box, Typography, Alert } from '@mui/material';
 
 const Home = () => {
   const isAuthenticated = useIsAuthenticated();
@@ -7,19 +7,23 @@ const Home = () => {
   if (isAuthenticated) {
     return (
       <Box>
-        <h2>You are now authenticated</h2>
-        <div>Now, click on the nav links for <strong>Workspaces</strong> and <strong>User Profile</strong> to demo this sample app.</div>
+        <Typography variant='h5' component="h2" sx={{ my: 3 }} >You are now authenticated</Typography>
+        <Alert sx={{ border: 1, padding: 2, mx: 2 }} severity='success' >
+          Now, click on the nav links for <strong>Workspaces</strong> and <strong>User Profile</strong>.
+        </Alert>
       </Box>
     )
   }
   else {
     return (
       <Box>
-        <h2>Welcome to the React MSAL Starter</h2>
-        <div>Click the <strong>LOGIN</strong> button in the upper right to get started.</div>
-        </Box>
+        <Typography variant='h5' component="h2" sx={{ my: 3 }} >Welcome to the React MSAL Starter</Typography>
+        <Alert sx={{ border: 1, padding: 2, mx: 2 }} severity='info' >Click the <strong>LOGIN</strong> button to get started.</Alert>
+      </Box>
     )
   }
 }
 
 export default Home;
+
+

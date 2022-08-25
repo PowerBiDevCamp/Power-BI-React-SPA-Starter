@@ -1,6 +1,6 @@
 import React from 'react';
 import { useMsal, useIsAuthenticated, useAccount } from "@azure/msal-react";
-import PageNotAccessible from './../PageNotAccessible';
+import PageNotAccessible from '../PageNotAccessible';
 
 import Button from '@mui/material/Button';
 import Table from '@mui/material/Table';

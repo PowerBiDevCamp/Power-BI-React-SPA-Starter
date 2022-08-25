@@ -1,6 +1,5 @@
-import React, { useRef, useLayoutEffect } from 'react';
+import { useRef, useLayoutEffect } from 'react';
 import { Route, Routes } from "react-router-dom";
-
 import { Container } from '@mui/material';
 
 import Banner from './Banner';
@@ -41,3 +40,4 @@ const PageLayout = () => {
 }
 
 export default PageLayout
+

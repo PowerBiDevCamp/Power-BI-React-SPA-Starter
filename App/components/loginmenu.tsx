@@ -7,11 +7,11 @@ import { Box, Button, Menu, MenuItem, Divider } from '@mui/material';
 import { AccountCircle, Login, Logout, KeyboardArrowDown } from '@mui/icons-material';
 
 const LoginMenu = () => {
-  const navigate = useNavigate();
   const isAuthenticated = useIsAuthenticated();
   const { instance, accounts } = useMsal();
-  const account = useAccount(accounts[0] || {});
+  const account = useAccount( accounts[0] || {} );
   const [anchorElementLoginMenu, setAnchorElementLoginMenu] = React.useState<HTMLElement | null>(null);
+  const navigate = useNavigate();
 
   const loginUser = () => {
     instance.loginPopup(PowerBiLoginRequest);
@@ -22,7 +22,14 @@ const LoginMenu = () => {
     instance.logoutPopup();
   };
 
-  if (isAuthenticated) {
+  if (!isAuthenticated) {
+    return (
+      <Box sx={{ marginLeft: "auto", marginRight: "12px" }}>
+        <Button onClick={loginUser} color="inherit" startIcon={<Login />}  >Login</Button>
+      </Box>
+    );
+  }
+  else {
     return (
       <Box sx={{ marginLeft: "auto" }}>
         <Button
@@ -55,14 +62,6 @@ const LoginMenu = () => {
         </Menu>
       </Box>
     );
-  }
-  else {
-    return (
-      <Box sx={{ marginLeft: "auto", marginRight: "12px" }}>
-        <Button onClick={loginUser} color="inherit" startIcon={<Login />}  >Login</Button>
-      </Box>
-    );
-
   }
 }
 

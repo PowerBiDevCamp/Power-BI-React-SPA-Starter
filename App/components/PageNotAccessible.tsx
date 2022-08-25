@@ -1,7 +1,6 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useMsal, useIsAuthenticated, useAccount } from "@azure/msal-react";
-import { Box, Button, Typography, Alert } from '@mui/material';
+import { useIsAuthenticated } from "@azure/msal-react";
+import { Box, Typography, Alert } from '@mui/material';
 
 const PageNotAccessible = () => {
   const isAuthenticated = useIsAuthenticated();

@@ -1,27 +1,29 @@
-import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 
+import { useState, useEffect } from 'react';
 import { useIsAuthenticated } from "@azure/msal-react";
-import PageNotAccessible from './../PageNotAccessible';
 
-import PowerBiService from '../../services/PowerBiService'
 import { PowerBiWorkspace } from '../../models/PowerBiModels';
+import PowerBiService from '../../services/PowerBiService'
 
-import { Box, Button, Paper } from '@mui/material';
+import { Box, Button, Paper, Typography,  } from '@mui/material';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 
-
+import PageNotAccessible from '../PageNotAccessible';
 
 const Workspaces = () => {
     const isAuthenticated = useIsAuthenticated();
     const [workspaces, setWorkspaces] = useState<PowerBiWorkspace[] | null>(null);
 
     useEffect(() => {
+
+        // define async function
         const setWorkspacesAsync = async () => {
             setWorkspaces(await PowerBiService.GetWorkspaces());
         }
-        if (isAuthenticated) {
-            setWorkspacesAsync();
-        }
+
+        // call async function if authenticated
+        if (isAuthenticated) { setWorkspacesAsync(); }
+
     }, [isAuthenticated]);
 
     if (!isAuthenticated) {
@@ -29,10 +31,10 @@ const Workspaces = () => {
     }
     else {
         return (
-            <Box>
-                <h2>Workspaces</h2>
+            <Box sx={{ pt:2 }} >
+                <Typography variant='h5' component="h2" >Workspaces</Typography>
                 <TableContainer component={Paper}>
-                    <Table aria-label="simple table" sx={{ marginTop: "12px" }}>
+                    <Table sx={{ marginTop: "12px" }}>
                         <TableHead sx={{ "& th": { color: "white", backgroundColor: "black" } }} >
                             <TableRow>
                                 <TableCell>Name</TableCell>
@@ -49,13 +51,18 @@ const Workspaces = () => {
                                     <TableCell>{workspace.id}</TableCell>
                                     <TableCell>{String(workspace.isReadOnly)}</TableCell>
                                     <TableCell>{String(workspace.isOnDedicatedCapacity)}</TableCell>
-                                    <TableCell><Button variant='contained' target="_blank" href={'https://app.powerbi.com/groups/' + workspace.id}>View</Button></TableCell>
+                                    <TableCell>
+                                        <Button variant='contained' target="_blank" 
+                                                href={'https://app.powerbi.com/groups/' + workspace.id}>
+                                            View
+                                        </Button>
+                                    </TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
                     </Table>
                 </TableContainer>
-            </Box>)
+            </Box>);
     }
 };
 

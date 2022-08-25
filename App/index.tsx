@@ -1,15 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { MsalProvider } from "@azure/msal-react";
-import { PublicClientApplication, EventType, EventMessage, AuthenticationResult } from "@azure/msal-browser";
-
 import App from './App';
 
+import { PublicClientApplication, EventType, EventMessage, AuthenticationResult } from "@azure/msal-browser";
+import { MsalProvider } from "@azure/msal-react";
+
+// get configuration data
 import { msalConfig } from "./AuthConfig";
 
+// make MSAL instance available to other source files
 export const msalInstance = new PublicClientApplication(msalConfig);
 
-// Account selection logic is app dependent. Adjust as needed for different use cases.
 const accounts = msalInstance?.getAllAccounts();
 if (accounts && accounts.length > 0) {
     msalInstance?.setActiveAccount(accounts[0]);
@@ -33,3 +34,4 @@ root.render(
         </MsalProvider>
     </React.StrictMode>
 );
+
